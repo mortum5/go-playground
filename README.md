@@ -3,7 +3,6 @@
 </p>
 
 ![Repository Top Language](https://img.shields.io/github/languages/top/mortum5/go-playground)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/mortum5/go-playground)
 ![Github Open Issues](https://img.shields.io/github/issues/mortum5/go-playground)
 ![GitHub contributors](https://img.shields.io/github/contributors/mortum5/go-playground)
 
