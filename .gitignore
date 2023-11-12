@@ -14,8 +14,14 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# Default executable file
+main
+
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
 # Go workspace file
 go.work
+
+# Go hash sum module file
+go.sum
