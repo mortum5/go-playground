@@ -25,3 +25,6 @@ go.work*
 
 # Go hash sum module file
 go.sum
+
+# Environment
+.env
