@@ -21,7 +21,7 @@ main
 # vendor/
 
 # Go workspace file
-go.work
+go.work*
 
 # Go hash sum module file
 go.sum
