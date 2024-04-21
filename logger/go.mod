@@ -1,4 +1,4 @@
-module github.com/mortum5/logger
+module github.com/mortum5/go-playground/logger
 
 go 1.21.0
 

@@ -11,6 +11,10 @@ import (
 	"github.com/fatih/color"
 )
 
+var (
+	colorBold *color.Color = color.New(color.Bold)
+)
+
 type PrettyHandlerOptions struct {
 	SlogOpts slog.HandlerOptions
 }
@@ -25,11 +29,11 @@ func (h *PrettyHandler) Handle(ctx context.Context, r slog.Record) error {
 
 	switch r.Level {
 	case slog.LevelDebug:
-		level = color.MagentaString(level)
+		level = color.CyanString(level)
 	case slog.LevelInfo:
-		level = color.BlueString(level)
-	case slog.LevelWarn:
 		level = color.GreenString(level)
+	case slog.LevelWarn:
+		level = color.BlueString(level)
 	case slog.LevelError:
 		level = color.RedString(level)
 	}
@@ -47,9 +51,9 @@ func (h *PrettyHandler) Handle(ctx context.Context, r slog.Record) error {
 	}
 
 	timeStr := r.Time.Format("[15:05:05.000]")
-	msg := color.CyanString(r.Message)
+	msg := r.Message
 
-	h.l.Println(timeStr, level, msg, color.WhiteString(string(b)))
+	h.l.Println(timeStr, colorBold.Sprint(level), colorBold.Sprint(msg), string(b))
 
 	return nil
 }
@@ -62,7 +66,6 @@ func NewPrettyHandler(
 		Handler: slog.NewJSONHandler(out, &opts.SlogOpts),
 		l:       log.New(out, "", 0),
 	}
-
 	return h
 }
 
