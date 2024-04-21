@@ -2,6 +2,7 @@ go 1.21.0
 
 use (
 	./cluster
+	./file-server
 	./logger
 	./message-broker
 	./minio

@@ -50,3 +50,9 @@ See [README](cluster/README.md) for additional information.
 File uploader on Fiber with Minio.
 
 See [README](minio/README.md) for additional information.
+
+### File server
+
+Simple file server
+
+See [README](file-server/README.md) for additional information.
