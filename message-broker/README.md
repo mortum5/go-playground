@@ -1,7 +1,22 @@
 
-# Очередь на go с REST интерфейсом
+# Message Brocker
 
-## ТЗ
+Реализация найденного в интернете тестового задания
+
+## Тест
+
+```sh
+curl -XPUT -i 'http://localhost:8080/pet?v=cat'  # 200 OK
+curl -XPUT -i 'http://localhost:8080/pet?v=dog'  # 200 OK 
+curl -XPUT -i 'http://localhost:8080/pet?v='     # 400 Bad Request
+curl -i 'http://localhost:8080/pet'              # cat
+curl -i 'http://localhost:8080/pet'              # dog
+curl -i 'http://localhost:8080/pet?timeout=700'  # wait until next req and
+                                                 # return dog after that
+curl -XPUT -i 'http://localhost:8080/pet?v=dog'  # 200 OK
+```
+
+## Задание
 
 Реализовать брокер очередей в виде веб сервиса. Сервис должен обрабатывать 2 метода:
 

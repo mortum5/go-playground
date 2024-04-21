@@ -123,17 +123,15 @@ func (t *Topics) Get(key string) string {
 
 func main() {
 	t := &Topics{
-		lock: &sync.Mutex{},
 		data: make(map[string][]string),
 	}
 
 	rQueue := &RequestQueue{
-		lock: &sync.Mutex{},
 		data: make(map[string]*DoubleLinkedList),
 	}
 
 	http.HandleFunc("/", queueHandle(t, rQueue))
-	http.ListenAndServe(":9090", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 func queueHandle(t *Topics, rQueue *RequestQueue) func(w http.ResponseWriter, req *http.Request) {
