@@ -68,7 +68,7 @@ func main() {
 		conn.Close()
 	}
 
-	sub.Unsubscribe(context.Background(), channelName)
+	sub.Unsubscribe(ctx, channelName)
 	sub.Close()
 
 	server.Shutdown(ctx)

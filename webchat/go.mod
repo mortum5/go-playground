@@ -1,4 +1,4 @@
-module github.com/mortum5/redis
+module github.com/mortum5/go-playground/webchat
 
 go 1.21.0
 
