@@ -1,4 +1,4 @@
-module github.com/mortum5/cluster
+module github.com/mortum5/go-playground/cluster
 
 go 1.21.0
 

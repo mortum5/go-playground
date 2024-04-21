@@ -85,6 +85,7 @@ func main() {
 
 	http.HandleFunc("/inc", counter.incHandler)
 	http.HandleFunc("/count", counter.countHandler)
+	http.HandleFunc("/ready", counter.readyHandler)
 
 	list, err := memberlist.Create(config)
 	if err != nil {
@@ -110,7 +111,9 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 
-	http.ListenAndServe(config.BindAddr+":3333", nil)
+	go func() {
+		http.ListenAndServe(config.BindAddr+":3333", nil)
+	}()
 
 	<-stop
 	if err := list.Leave(5 * time.Second); err != nil {
@@ -131,4 +134,8 @@ func (c *GCounter) countHandler(w http.ResponseWriter, r *http.Request) {
 		res := c.Count()
 		json.NewEncoder(w).Encode(&res)
 	}
+}
+
+func (c *GCounter) readyHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(200)
 }

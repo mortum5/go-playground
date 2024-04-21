@@ -2,21 +2,35 @@ version: '3.9'
 
 services:
   node1:
-    image: cluster:latest
+    build:
+      context: .
     environment:
       - NODE=localhost
     ports:
       - 3031:3333
+    healthcheck:
+      test: "wget -qO - localhost:3333/ready || exit 1"
+      interval: 1s
+      timeout: 1s
+      retries: 5
 
   node2:
-    image: cluster:latest
+    build:
+      context: .
+    depends_on:
+      node1:
+        condition: service_healthy
     environment:
       - NODE=node1
     ports:
       - 3032:3333
 
-  node3:
-    image: cluster:latest
+  mode3:
+    build:
+      context: .
+    depends_on:
+      node1:
+        condition: service_healthy
     environment:
       - NODE=node1
     ports:
