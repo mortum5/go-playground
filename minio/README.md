@@ -1,20 +1,14 @@
-# File uploader on Fiber
+# Minio
 
-```sh
-docker run \
-  -p 9000:9000 \
-  -p 9001:9001 \
-  --name minio1 \
-  -v $(PWD)/data:/data \
-  -e "MINIO_ROOT_USER=AKIAIOSFODNN7EXAMPLE" \
-  -e "MINIO_ROOT_PASSWORD=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
-  quay.io/minio/minio server /data --console-address ":9001"
-```
+File uploader on Fiber
 
-Import .env var
+## Install
 
-```sh
-set -o allexport
-source .env 
-set +o allexport
-```
+1. Install [docker](https://www.docker.com/) and docker compose
+
+## Run
+
+1. Copy env file with `cp env_example .env`
+2. Run minio instance with `docker compose up`
+3. Upload file with command `curl -i -X POST -H "Content-Type: multipart/form-data" -F "fileUpload=@PATH_TO_FILE" http://localhost:5000/api/v1/upload`
+4. Open `http://localhost:9001` in browser

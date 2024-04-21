@@ -1,9 +1,10 @@
-module github.com/mortum5/minio
+module github.com/mortum5/go-playground/minio
 
 go 1.21.0
 
 require (
 	github.com/gofiber/fiber/v2 v2.50.0
+	github.com/joho/godotenv v1.5.1
 	github.com/minio/minio-go/v7 v7.0.63
 )
 

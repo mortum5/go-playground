@@ -47,6 +47,6 @@ See [README](cluster/README.md) for additional information.
 
 ### Minio
 
-File uploader on Fiber with Minio library.
+File uploader on Fiber with Minio.
 
 See [README](minio/README.md) for additional information.

@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 
@@ -13,7 +12,6 @@ import (
 func MinioConnection() (*minio.Client, error) {
 	ctx := context.Background()
 	endpoint := os.Getenv("MINIO_ENDPOINT")
-	fmt.Println(endpoint)
 	accessKeyID := os.Getenv("MINIO_ACCESSKEY")
 	secretAccessKey := os.Getenv("MINIO_SECRETKEY")
 	useSSL := false
@@ -43,5 +41,5 @@ func MinioConnection() (*minio.Client, error) {
 		log.Printf("Successfully created %s\n", bucketName)
 	}
 
-	return minioClient, err
+	return minioClient, nil
 }

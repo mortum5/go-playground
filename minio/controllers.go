@@ -13,7 +13,6 @@ func UploadFile(c *fiber.Ctx) error {
 	ctx := context.Background()
 	bucketName := os.Getenv("MINIO_BUCKET")
 	file, err := c.FormFile("fileUpload")
-
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
@@ -23,7 +22,6 @@ func UploadFile(c *fiber.Ctx) error {
 
 	// Get Buffer from file
 	buffer, err := file.Open()
-
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
