@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
+	"syscall"
 	"time"
 
 	"github.com/pkg/browser"
@@ -22,8 +23,8 @@ var (
 func main() {
 	flag.Parse()
 
-	sigint := make(chan os.Signal, 1)
-	signal.Notify(sigint, os.Interrupt)
+	sig := make(chan os.Signal, 1)
+	signal.Notify(sig, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
 	dirname, err := filepath.Abs(*path)
 	if err != nil {
@@ -52,7 +53,7 @@ func main() {
 		browser.OpenURL("http://localhost:" + *port)
 	}
 
-	<-sigint
+	<-sig
 	if err := httpServer.Shutdown(context.Background()); err != nil {
 		log.Printf("HTTP Server Shutdown Error: %v", err)
 	}
