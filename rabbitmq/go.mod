@@ -1,4 +1,4 @@
-module github.com/mortum5/rabbitmq
+module github.com/mortum5/go-playground/rabbitmq
 
 go 1.21.0
 
